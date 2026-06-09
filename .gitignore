@@ -1,4 +1,4 @@
-/*_sbatch.sh
+/infer_*_sbatch.sh
 /work_dirs/*
 *__pycache__
 /models/*
