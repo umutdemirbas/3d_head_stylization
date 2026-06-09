@@ -44,7 +44,8 @@ class Inference():
         self.cam_radius = self.G_frozen.rendering_kwargs.get("avg_camera_radius", 2.7)
         self.intrinsics = FOV_to_intrinsics(18.837, device=device)
         visualize_yaw_pitch_list = [(-180 + 30*i, 10) for i in range(13)]
-        visualize_yaw_pitch_list_front = [visualize_yaw_pitch_list[i] for i in [3,5,6,7,9]]
+        #visualize_yaw_pitch_list_front = [visualize_yaw_pitch_list[i] for i in [3,5,6,7,9]]
+        visualize_yaw_pitch_list_front = visualize_yaw_pitch_list
         self.front_pose_list_visualize = [self.get_pose(intrinsics=self.intrinsics, cam_pivot=self.cam_pivot, yaw=y*np.pi/180, pitch=p*np.pi/180) for y,p in visualize_yaw_pitch_list_front]
         self.conditioning_camera_params = self.get_pose(self.cam_pivot, self.intrinsics, yaw=0, pitch=0.2, cam_radius=self.cam_radius, device=device)
 

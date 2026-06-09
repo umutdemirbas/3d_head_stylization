@@ -43,18 +43,25 @@ python infer_LD.py \
     --latent_list_path "example" \
     --synth_sample_num 10
 ```
-## :running: Training
-Change ```prompt``` and ```save_path```. You may play with other hyperparameters in the training file.
-```
-python train_LD.py \
-    --prompt "Portrait of a werewolf" \
-    --save_path "work_dirs/demo" \
-    --diff_ckpt_path ${diff_ckpt_path} \
-    --depth_path ${depth_path} \
-    --G_ckpt_path ${G_ckpt_path} \
-    --controlnet_edge_path ${controlnet_edge_path} \
-    --controlnet_depth_path ${controlnet_depth_path}
-```
+
+## Group 3 task 4 implementation
+
+To stylize a 3D head, run the following command. Change the paths according to your setup. If you put the checkpoints in the models directory, the following command works without any modification. The command will resume training from the last checkpoint in the save path if it exists. If you want to start training from scratch, remove the ```--resume``` flag. This is the low vram version, and runs on an rtx2080ti. 
+
+python3 train_LD2.py \
+  --prompt "Portrait of a person in Renaissance oil painting style, dramatic Rembrandt lighting, painterly brushstrokes, warm shadows, textured canvas, realistic painted face, museum masterpiece, highly detailed" \
+  --save_path "work_dirs/oil_paint" \
+  --diff_ckpt_path models/Realistic_Vision_V5.1_noVAE \
+  --G_ckpt_path models/easy-khair-180-gpc0.8-trans10-025000.pkl \
+  --latent_list_path demo_dataset \
+  --use_SDS 1 \
+  --num_angles 7 \
+  --num_pitch_angles 1 \
+  --yaw_range_front -1.57 1.57 \
+  --resume
+
+We have also included the sbatch files we used for training on our cluster. See them for example usage, and our final prompts. 
+
 
 ## :incoming_envelope: Citation
 ```
