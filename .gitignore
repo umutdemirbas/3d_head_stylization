@@ -1,3 +1,4 @@
 /*_sbatch.sh
 /work_dirs/*
 *__pycache__
+/models/*
